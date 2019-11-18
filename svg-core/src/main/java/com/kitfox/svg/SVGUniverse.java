@@ -3,16 +3,16 @@
  * Copyright (c) 2004, Mark McKay
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or 
+ * Redistribution and use in source and binary forms, with or
  * without modification, are permitted provided that the following
  * conditions are met:
  *
- *   - Redistributions of source code must retain the above 
+ *   - Redistributions of source code must retain the above
  *     copyright notice, this list of conditions and the following
  *     disclaimer.
  *   - Redistributions in binary form must reproduce the above
  *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/or other materials 
+ *     disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -26,8 +26,8 @@
  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
- * 
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
  * Mark McKay can be contacted at mark@kitfox.com.  Salamander and other
  * projects can be found at http://www.kitfox.com
  *
@@ -37,19 +37,16 @@ package com.kitfox.svg;
 
 import com.kitfox.svg.app.beans.SVGIcon;
 import com.kitfox.svg.util.Base64InputStream;
-import java.awt.Graphics2D;
+import org.xml.sax.*;
+
+import javax.imageio.ImageIO;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParserFactory;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Reader;
-import java.io.Serializable;
+import java.io.*;
 import java.lang.ref.SoftReference;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -60,14 +57,6 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
-import javax.imageio.ImageIO;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.XMLReader;
 
 /**
  * Many SVG files can be loaded at one time. These files will quite likely need
@@ -101,7 +90,7 @@ public class SVGUniverse implements Serializable
 
     //If true, <imageSVG> elements will only load image data that is included using inline data: uris
     private boolean imageDataInlineOnly = false;
-    
+
     /**
      * Creates a new instance of SVGUniverse
      */
@@ -196,7 +185,7 @@ public class SVGUniverse implements Serializable
 //                    ByteArrayInputStream bais = new ByteArrayInputStream(buf);
                     ByteArrayInputStream bis = new ByteArrayInputStream(content.getBytes());
                     Base64InputStream bais = new Base64InputStream(bis);
-                    
+
                     BufferedImage img = ImageIO.read(bais);
 
                     URL url;
@@ -390,7 +379,7 @@ public class SVGUniverse implements Serializable
             {
                 //Workaround for resources stored in jars loaded by Webstart.
                 //http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6753651
-                url = SVGUniverse.class.getResource("xmlBase.getPath()");
+                url = SVGUniverse.class.getResource(xmlBase.getPath());
             }
             else
             {
@@ -627,22 +616,22 @@ public class SVGUniverse implements Serializable
 
     /**
      * Get list of uris of all loaded documents and subdocuments.
-     * @return 
+     * @return
      */
     public ArrayList<URI> getLoadedDocumentURIs()
     {
         return new ArrayList<URI>(loadedDocs.keySet());
     }
-    
+
     /**
      * Remove loaded document from cache.
-     * @param uri 
+     * @param uri
      */
     public void removeDocument(URI uri)
     {
         loadedDocs.remove(uri);
     }
-    
+
     public boolean isVerbose()
     {
         return verbose;
