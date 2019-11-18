@@ -12,3 +12,4 @@
 /svg-example/target/
 /svg-example/dist
 .idea
+.gradle

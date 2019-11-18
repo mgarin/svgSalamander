@@ -1,0 +1,33 @@
+apply from: rootProject.file('gradle/publication.gradle')
+apply plugin: "com.intershop.gradle.javacc"
+
+description = 'A tool for displaying and playing SVG content using the Java2D'
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += ['src/main/res']
+        }
+    }
+
+    test {
+        resources {
+            srcDirs += ['src/test/res']
+        }
+    }
+}
+
+dependencies {
+    compileOnly 'org.apache.ant:ant:1.9.13'
+}
+
+javacc {
+    // configuration container for all javacc configurations
+    configs {
+        template {
+            inputFile = file('src/main/java/com/kitfox/svg/animation/parser/AnimTimeParser.jjt')
+            packageName = 'com.kitfox.svg.animation.parser'
+            lookahead = '2'
+        }
+    }
+}

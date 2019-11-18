@@ -1,0 +1,25 @@
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+
+        resources {
+            srcDirs = ['res']
+        }
+    }
+
+    test {
+        java {
+            srcDirs = ['test']
+        }
+
+        resources {
+            srcDirs = ['res']
+        }
+    }
+}
+
+dependencies {
+    compile project(':svg-salamander')
+}
