@@ -17,7 +17,7 @@ modifyPom {
         licenses {
             license {
                 name 'BSD License'
-                url 'https://opensource.org/licenses/BSD-2-Clause'
+                url 'https://opensource.org/licenses/BSD-3-Clause'
             }
         }
 
