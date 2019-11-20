@@ -9,7 +9,7 @@ To add latest release to your Maven project use next dependency:
 <dependency>
   <groupId>com.weblookandfeel</groupId>
   <artifactId>svg-salamander</artifactId>
-  <version>1.1.2.1</version>
+  <version>1.1.2.2</version>
 </dependency>
 ```
 

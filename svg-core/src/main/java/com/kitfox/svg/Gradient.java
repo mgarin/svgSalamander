@@ -3,16 +3,16 @@
  * Copyright (c) 2004, Mark McKay
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or 
+ * Redistribution and use in source and binary forms, with or
  * without modification, are permitted provided that the following
  * conditions are met:
  *
- *   - Redistributions of source code must retain the above 
+ *   - Redistributions of source code must retain the above
  *     copyright notice, this list of conditions and the following
  *     disclaimer.
  *   - Redistributions in binary form must reproduce the above
  *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/or other materials 
+ *     disclaimer in the documentation and/or other materials
  *     provided with the distribution.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -26,8 +26,8 @@
  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
- * 
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
  * Mark McKay can be contacted at mark@kitfox.com.  Salamander and other
  * projects can be found at http://www.kitfox.com
  *
@@ -36,12 +36,13 @@
 package com.kitfox.svg;
 
 import com.kitfox.svg.xml.StyleAttribute;
-import java.awt.Color;
+
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,7 +53,7 @@ import java.util.logging.Logger;
 abstract public class Gradient extends FillElement
 {
     public static final String TAG_NAME = "gradient";
-    
+
     public static final int SM_PAD = 0;
     public static final int SM_REPEAT = 1;
     public static final int SM_REFLECT = 2;
@@ -65,7 +66,7 @@ abstract public class Gradient extends FillElement
     ArrayList<Stop> stops = new ArrayList<Stop>();
     URI stopRef = null;
     protected AffineTransform gradientTransform = null;
-    
+
     //Cache arrays of stop values here
     float[] stopFractions;
     Color[] stopColors;
@@ -164,7 +165,8 @@ abstract public class Gradient extends FillElement
     private void buildStops()
     {
         ArrayList<Stop> stopList = new ArrayList<Stop>(stops);
-        stopList.sort(new Comparator<Stop>(){
+        Collections.sort(stopList, new Comparator<Stop>()
+        {
             public int compare(Stop o1, Stop o2)
             {
                 return Float.compare(o1.offset, o2.offset);
@@ -179,8 +181,8 @@ abstract public class Gradient extends FillElement
                 stopList.remove(i + 1);
             }
         }
-        
-        
+
+
         stopFractions = new float[stopList.size()];
         stopColors = new Color[stopList.size()];
         int idx = 0;
@@ -193,9 +195,9 @@ abstract public class Gradient extends FillElement
             stopFractions[idx] = stop.offset;
             idx++;
         }
-        
+
     }
-    
+
     public float[] getStopFractions()
     {
         if (stopRef != null)
