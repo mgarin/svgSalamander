@@ -1,3 +1,21 @@
+Fork purpose
+==============
+This fork of [blackears/svgSalamander](https://github.com/blackears/svgSalamander) library was made for Maven releases and minor fixes for the library.
+
+All Maven releases of this code are using `com.weblookandfeel` group ID and `svg-salamander` artifact ID and can be found [here](https://search.maven.org/search?q=g:com.weblookandfeel%20AND%20a:svg-salamander&core=gav).
+
+To add latest release to your Maven project use next dependency:
+```xml
+<dependency>
+  <groupId>com.weblookandfeel</groupId>
+  <artifactId>svg-salamander</artifactId>
+  <version>1.1.2.1</version>
+</dependency>
+```
+
+Major, minor and patch versions are equal to ones on [official project releases](https://github.com/blackears/svgSalamander/releases). Fourth version number is added for any intermediate changes added by my in this fork.
+
+
 SVG Salamander
 ==============
 SVG Salamander is an SVG engine for Java that's designed to be small, fast, and allow programmers to use it with a minimum of fuss. It's in particular targeted for making it easy to integrate SVG into Java games and making it much easier for artists to design 2D game content - from rich interactive menus to charts and graphcs to complex animations.
