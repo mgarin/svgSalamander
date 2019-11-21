@@ -1,8 +1,11 @@
-Fork purpose
+About this fork
 ==============
-This fork of [blackears/svgSalamander](https://github.com/blackears/svgSalamander) library was made for Maven releases and minor fixes for the library.
+[![Latest Version](https://img.shields.io/maven-central/v/com.weblookandfeel/svg-salamander)](https://github.com/mgarin/svg/releases)
+[![License](https://img.shields.io/github/license/mgarin/svgSalamander)](https://github.com/mgarin/weblaf/blob/master/LICENSE.txt)
+[![Last Commit](https://img.shields.io/github/last-commit/mgarin/svgSalamander)](https://github.com/mgarin/weblaf/commits/master)
+[![Chat on Gitter](https://img.shields.io/gitter/room/mgarin/weblaf?color=%2342ac8c)](https://gitter.im/mgarin/weblaf)
 
-All Maven releases of this code are using `com.weblookandfeel` group ID and `svg-salamander` artifact ID and can be found [here](https://search.maven.org/search?q=g:com.weblookandfeel%20AND%20a:svg-salamander&core=gav).
+This fork of [blackears/svgSalamander](https://github.com/blackears/svgSalamander) library was made for Maven releases and minor fixes for the library.
 
 To add latest release to your Maven project use next dependency:
 ```xml
@@ -13,7 +16,9 @@ To add latest release to your Maven project use next dependency:
 </dependency>
 ```
 
-Major, minor and patch versions are equal to ones on [official project releases](https://github.com/blackears/svgSalamander/releases). Fourth version number is added for any intermediate changes added by my in this fork.
+You can find all other released versions on [search.maven.org](https://search.maven.org/search?q=g:com.weblookandfeel%20AND%20a:svg-salamander&core=gav).
+
+Major, minor and patch versions of releases will be similar to ones on [official project releases](https://github.com/blackears/svgSalamander/releases), but will also contain my personal fixes added on this fork. Fourth version number will be added to any releases between official ones to reference changes I've made on this fork.
 
 
 SVG Salamander
